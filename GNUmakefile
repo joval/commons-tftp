@@ -3,7 +3,7 @@ Default: all
 TOP=../../..
 
 ifndef JAVA_HOME
-    JAVA_HOME=$(TOP)/tools/jdk160_26
+    JAVA_HOME=$(TOP)/tools/jdk1.6.0_26
 endif
 
 ifeq (Windows, $(findstring Windows,$(OS)))
@@ -47,6 +47,10 @@ javadocs:
 
 clean:
 	rm -rf $(BUILD)
+
+install: tftp.jar
+	cp $< $(TOP)/repositories/jOVAL-Commercial/components/provider/rsrc/lib
+	cp $< $(TOP)/repositories/jOVAL-Commercial/components/sdk/dist/3rd-party/
 
 classes: classdirs $(CLASS_FILES)
 
